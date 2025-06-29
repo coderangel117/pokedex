@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Header } from '../../layouts/header/header';
 import { PokemonService } from '../../services/pokemon.service';
 import { NgOptimizedImage } from '@angular/common';
+
 @Component({
   selector: 'app-home',
   imports: [
@@ -9,13 +10,17 @@ import { NgOptimizedImage } from '@angular/common';
     NgOptimizedImage
   ],
   templateUrl: './home.html',
-  styleUrl: './home.scss'
+  styleUrls: ['./home.scss']
 })
 export class Home implements OnInit {
+  public pokemons: any;
 
   constructor(private PokemonService: PokemonService) { }
 
   ngOnInit(): void {
-    let data = this.PokemonService.getAllPokemons();
+    this.PokemonService.getAllPokemons().subscribe((data) => {
+      this.pokemons = data;
+      console.log(this.pokemons[0]);
+    });
   }
 }

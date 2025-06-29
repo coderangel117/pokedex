@@ -1,17 +1,11 @@
 <app-header></app-header>
 
 <div class="pokedex-grid">
-  <!-- Exemple d'une card, à boucler plus tard sur data -->
-  <a class="pokemon-card" href="#">
-    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png" alt="Bulbasaur" />
-    <div class="pokemon-name">Bulbasaur</div>
-  </a>
-  <a class="pokemon-card" href="#">
-    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png" alt="Charmander" />
-    <div class="pokemon-name">Charmander</div>
-  </a>
-  <a class="pokemon-card" href="#">
-    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png" alt="Squirtle" fill/>
-    <div class="pokemon-name">Squirtle</div>
-  </a>
+  @for(p of pokemons; track p.pokedex_id) {
+    <a class="pokemon-card" href="#">
+      <p class="pokemon-id">{{ p.pokedex_id }}</p>
+      <img priority [ngSrc]="'https://raw.githubusercontent.com/Yarkis01/TyraDex/images/sprites/' + p.pokedex_id + '/regular.png'" width="96" height="96" alt="{{p.name.fr}}"/>
+      <div class="pokemon-name">{{ p.name.fr }}</div>
+    </a>
+  }
 </div>

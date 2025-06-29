@@ -10,11 +10,7 @@ export class PokemonService {
   }
 
   public getAllPokemons() {
-    this.http.get('https://tyradex.app/api/v1/pokemon').subscribe(
-      data => {
-        console.log(data);
-      }
-    );
+   return this.http.get('https://tyradex.app/api/v1/pokemon');
   }
 
   public getPokemon(id: number) {
